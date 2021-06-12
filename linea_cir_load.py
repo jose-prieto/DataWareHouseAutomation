@@ -113,12 +113,12 @@ class linea_cir_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.dfBs.iterrows():
-                cursor.execute("INSERT INTO LINEA_BS (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO LINEA_BS (linbs_mis, linbs_monto, linbs_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["montoBs"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfDolar.iterrows():
-                cursor.execute("INSERT INTO LINEA_DOLAR (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO LINEA_DOLAR (lind_mis, lind_monto, lind_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["montoDolar"], 
                                fila["fecha"]))
@@ -131,5 +131,6 @@ class linea_cir_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("linea cir")
     
 #pf = linea_cir_load(r'C:\Users\José Prieto\Documents\Bancaribe\Enero', "29/01/2021").df

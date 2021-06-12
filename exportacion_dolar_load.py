@@ -103,7 +103,7 @@ class exportacion_dolar_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO EXPORTACION (mis, monto_compra, monto_venta, fecha) VALUES(%s, %s, %s, %s)", 
+                cursor.execute("INSERT INTO EXPORTACION (exp_mis, exp_monto_compra, exp_monto_venta, exp_fecha) VALUES(%s, %s, %s, %s)", 
                                (fila["mis"], 
                                fila["montoCompra"], 
                                fila["montoVenta"], 
@@ -117,3 +117,4 @@ class exportacion_dolar_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("Exportacion dolar")

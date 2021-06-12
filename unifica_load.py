@@ -137,17 +137,17 @@ class unifica_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.dfBs.iterrows():
-                cursor.execute("INSERT INTO AHORRO_CORRIENTE (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO AHORRO_CORRIENTE (ah_mis, ah_monto, ah_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfDolar.iterrows():
-                cursor.execute("INSERT INTO CONVENIO (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO CONVENIO (conv_mis, conv_monto, conv_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfEuro.iterrows():
-                cursor.execute("INSERT INTO CUENTA_EUROS (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO CUENTA_EUROS (eur_mis, eur_monto, eur_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
@@ -160,6 +160,7 @@ class unifica_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("unifica")
     
     def to_csv(self):
         self.dfBs.to_csv(self.ruta + '\\rchivos csv\corriente_ahorro.csv', index = False, header=True, sep='|', 

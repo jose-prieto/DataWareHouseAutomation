@@ -75,7 +75,7 @@ class p2p_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO P2P (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO P2P (p2p_mis, p2p_monto, p2p_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
@@ -88,5 +88,6 @@ class p2p_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("p2p")
 
 #rrgg_cirporativo = rrgg_corporativo_load(r'C:\Users\José Prieto\Documents\Bancaribe\Enero').df

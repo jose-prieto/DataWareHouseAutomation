@@ -55,12 +55,12 @@ class cartera_cliente_load:
         self.df['CedulaCliente'] = self.df['CedulaCliente'].str.strip()
         self.df['MIS Grupo'] = np.where(self.df['MIS Grupo'] == 'No Tiene', 0, self.df['MIS Grupo'])
         self.df['MIS Grupo'] = np.where(self.df['MIS Grupo'] == '', 0, self.df['MIS Grupo'])
-        self.df['MIS Grupo'] = np.where(self.df['MIS Grupo'] is None, 0, self.df['MIS Grupo'])
+        #self.df['MIS Grupo'] = np.where(self.df['MIS Grupo'] is None, 0, self.df['MIS Grupo'])
         self.df['Código de BC'] = self.df['Código de BC'].str.replace('bc','')
         self.df['Grupo Economico'] = np.where(self.df['Grupo Economico'] == 'No Tiene', self.df['NombreCliente'], self.df['Grupo Economico'])
         self.df['Grupo Economico'] = np.where(self.df['Grupo Economico'] == '', self.df['NombreCliente'], self.df['Grupo Economico'])
         self.df['Grupo Economico'] = np.where(self.df['Grupo Economico'] == 0, self.df['NombreCliente'], self.df['Grupo Economico'])
-        self.df['Grupo Economico'] = np.where(self.df['Grupo Economico'] is None, self.df['NombreCliente'], self.df['Grupo Economico'])
+        #self.df['Grupo Economico'] = np.where(self.df['Grupo Economico'] is None, self.df['NombreCliente'], self.df['Grupo Economico'])
         self.df = self.recorrerDF(self.df)
         self.df['MisCliente'] = self.df['MisCliente'].astype(str)
         
@@ -173,6 +173,7 @@ class cartera_cliente_load:
                 print(type(excep))
                 print(excep.args)
                 print(excep)
+                print("cartera")
             finally:
                 pass
             

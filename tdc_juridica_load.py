@@ -73,7 +73,7 @@ class tdc_juridica_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO TDC (mis, fecha) VALUES(%s, %s)", 
+                cursor.execute("INSERT INTO TDC (tdc_mis, tdc_fecha) VALUES(%s, %s)", 
                                (fila["mis"], 
                                fila["fecha"]))
         except KeyError as llave:
@@ -85,5 +85,6 @@ class tdc_juridica_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("tdc")
     
 #pf = linea_cir_load(r'C:\Users\bc221066\Documents\José Prieto\Insumos Cross Selling\Enero').df

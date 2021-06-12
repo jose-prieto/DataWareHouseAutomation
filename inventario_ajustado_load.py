@@ -111,12 +111,12 @@ class inventario_ajustado_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.dfBs.iterrows():
-                cursor.execute("INSERT INTO CREDITO_VIGENTE (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO CREDITO_VIGENTE (vig_mis, vig_monto, vig_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfDolar.iterrows():
-                cursor.execute("INSERT INTO CREDITO_DOLAR (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO CREDITO_DOLAR (cre_mis, cre_monto, cre_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
@@ -129,6 +129,7 @@ class inventario_ajustado_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("inventario ajustado")
     
 #todo = ah_unifica_load(r'C:\Users\José Prieto\Documents\Bancaribe\Marzo')
 #bs = todo.dfBs

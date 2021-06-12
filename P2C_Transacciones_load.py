@@ -90,7 +90,7 @@ class P2C_Transacciones_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO P2C (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO P2C (p2c_mis, p2c_monto, p2c_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
@@ -103,5 +103,6 @@ class P2C_Transacciones_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("p2c")
     
 #p2c = P2C_Transacciones_load(r'C:\Users\José Prieto\Documents\Bancaribe\Enero').to_csv()

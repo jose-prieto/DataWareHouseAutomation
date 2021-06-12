@@ -81,7 +81,7 @@ class fideicomiso_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO FIDEICOMISO (mis, fecha) VALUES(%s, %s)", 
+                cursor.execute("INSERT INTO FIDEICOMISO (fid_mis, fid_fecha) VALUES(%s, %s)", 
                                (fila["mis"], 
                                fila["fecha"]))
         except KeyError as llave:
@@ -93,5 +93,6 @@ class fideicomiso_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("fideicomiso")
     
 #pf = linea_cir_load(r'C:\Users\José Prieto\Documents\Bancaribe\Enero', "29/01/2021").df

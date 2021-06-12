@@ -79,7 +79,7 @@ class tdv_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO TDV (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO TDV (tdv_mis, tdv_monto, tdv_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
@@ -92,3 +92,4 @@ class tdv_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("tdv")

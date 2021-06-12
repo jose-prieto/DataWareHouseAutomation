@@ -160,13 +160,13 @@ class mesa_cambio_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO MESA_CAMBIO_DOLAR (mis, monto_compra, monto_venta, fecha) VALUES(%s, %s, %s, %s)", 
+                cursor.execute("INSERT INTO MESA_CAMBIO_DOLAR (camd_mis, camd_monto_compra, camd_monto_venta, camd_fecha) VALUES(%s, %s, %s, %s)", 
                                (fila["mis"], 
                                fila["montoCompra"], 
                                fila["montoVenta"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfEuro.iterrows():
-                cursor.execute("INSERT INTO MESA_CAMBIO_EURO (mis, monto_compra, monto_venta, fecha) VALUES(%s, %s, %s, %s)", 
+                cursor.execute("INSERT INTO MESA_CAMBIO_EURO (came_mis, came_monto_compra, came_monto_venta, came_fecha) VALUES(%s, %s, %s, %s)", 
                                (fila["mis"], 
                                fila["montoCompra"], 
                                fila["montoVenta"], 
@@ -180,3 +180,4 @@ class mesa_cambio_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("mesa de cambio")

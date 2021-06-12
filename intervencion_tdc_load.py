@@ -91,7 +91,7 @@ class intervencion_tdc_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO INTERVENCION_TDC (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO INTERVENCION_TDC (int_mis, int_monto, int_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
@@ -104,3 +104,4 @@ class intervencion_tdc_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("intervencion tdc")

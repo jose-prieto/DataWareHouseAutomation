@@ -90,7 +90,7 @@ class originacion_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO ORIGINACION (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO ORIGINACION (ori_mis, ori_monto, ori_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
@@ -103,3 +103,4 @@ class originacion_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("originacion")

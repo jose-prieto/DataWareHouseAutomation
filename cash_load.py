@@ -257,38 +257,39 @@ class cash_load:
             print(type(llave))
             print(llave.args)
             print(llave)
+            print("cash")
         finally:
             conn.close()
     
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.dfPap.iterrows():
-                cursor.execute("INSERT INTO PAP (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO PAP (pap_mis, pap_monto, pap_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfnom.iterrows():
-                cursor.execute("INSERT INTO NOM (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO NOM (nom_mis, nom_monto, nom_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfpet.iterrows():
-                cursor.execute("INSERT INTO PET (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO PET (pet_mis, pet_monto, pet_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfppt.iterrows():
-                cursor.execute("INSERT INTO PPT (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO PPT (ppt_mis, ppt_monto, ppt_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfdom.iterrows():
-                cursor.execute("INSERT INTO DOM (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO DOM (dom_mis, dom_monto, dom_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
             for indice_fila, fila in self.dfEdi.iterrows():
-                cursor.execute("INSERT INTO EDI (mis, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO EDI (edi_mis, edi_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["fecha"]))
         except KeyError as llave:

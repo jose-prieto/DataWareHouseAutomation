@@ -75,7 +75,7 @@ class puntos_venta_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO PUNTO_DE_VENTA (mis, monto, fecha) VALUES(%s, %s, %s)", 
+                cursor.execute("INSERT INTO PUNTO_DE_VENTA (pdv_mis, pdv_monto, pdv_fecha) VALUES(%s, %s, %s)", 
                                (fila["mis"], 
                                fila["monto"], 
                                fila["fecha"]))
@@ -88,5 +88,6 @@ class puntos_venta_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("pdv")
     
 #pf = linea_cir_load(r'C:\Users\bc221066\Documents\José Prieto\Insumos Cross Selling\Enero').df

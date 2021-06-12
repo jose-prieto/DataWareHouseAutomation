@@ -89,7 +89,7 @@ class custodia_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO CUSTODIA (mis, monto_dolar, monto_euro, fecha) VALUES(%s, %s, %s, %s)", 
+                cursor.execute("INSERT INTO CUSTODIA (cus_mis, cus_monto_dolar, cus_monto_euro, cus_fecha) VALUES(%s, %s, %s, %s)", 
                                (fila["mis"], 
                                fila["montoDolar"], 
                                fila["montoEuro"], 
@@ -103,6 +103,7 @@ class custodia_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("custodia")
     
 #todo = custodia_load(r'C:\Users\bc221066\Documents\José Prieto\Insumos Cross Selling\Febrero').df
 #ccBs = todo.cc_unifica.dfBs

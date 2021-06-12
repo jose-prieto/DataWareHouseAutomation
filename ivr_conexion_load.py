@@ -75,7 +75,7 @@ class ivr_conexion_load:
     def insertPg(self, cursor):
         try:
             for indice_fila, fila in self.df.iterrows():
-                cursor.execute("INSERT INTO CONEXION (mis, fecha) VALUES(%s, %s)", 
+                cursor.execute("INSERT INTO CONEXION (conex_mis, conex_fecha) VALUES(%s, %s)", 
                                (fila["mis"], 
                                fila["fecha"]))
         except KeyError as llave:
@@ -87,5 +87,6 @@ class ivr_conexion_load:
             print(type(excep))
             print(excep.args)
             print(excep)
+            print("conexion")
     
 #ivr = ivr_conexion_load(r'C:\Users\José Prieto\Documents\Bancaribe\Enero').to_csv()
