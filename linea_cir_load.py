@@ -15,7 +15,7 @@ class linea_cir_load:
         self.nombre_archivo = '\\REPORTES DE CIR'
         for file in gb.glob(self.ruta + self.nombre_archivo + '*.xlsx'):
             self.ruta = file
-        self.df = pd.read_excel(self.ruta, usecols = 'G,J,R,V', header=0, sheet_name = "CONSOLIDADO", index_col=False, skiprows=11, keep_default_na=True, dtype=str)
+        self.df = pd.read_excel(self.ruta, usecols = 'G,J,S,W', header=0, sheet_name = "CONSOLIDADO", index_col=False, skiprows=11, keep_default_na=True, dtype=str)
         self.df = self.df.rename(columns={self.df.columns[0]: 'estatus', self.df.columns[1]: 'mis', self.df.columns[2]: 'montoBs', self.df.columns[3]: 'montoDolar'})
         self.df = self.df[(self.df["estatus"] == "VIGENTE")]
         self.df['montoBs'] = self.df['montoBs'].astype(float)

@@ -86,7 +86,13 @@ class mesa_cambio_load:
         df = self.df.assign(uso = 1)
         df = df.rename(columns={'uso': 'Mesa de Cambio (USD)'})
         
-        return df.groupby(['mis'], as_index=False).agg({'Mesa de Cambio (USD)': 'first'})
+        dfEuro = self.dfEuro.assign(uso = 1)
+        dfEuro = dfEuro.rename(columns={'uso': 'Mesa de Cambio (Euro)'})
+        
+        df = pd.merge(df, dfEuro, how='outer', right_on='mis', left_on='mis')
+        
+        return df.groupby(['mis'], as_index=False).agg({'Mesa de Cambio (USD)': 'first', 
+                                                        'Mesa de Cambio (Euro)': 'first'})
 
     def quitarCeros(self, rifCliente):
         aux = rifCliente[1:]

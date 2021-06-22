@@ -14,6 +14,7 @@ from custodia_load import custodia_load
 from mesa_cambio_load import mesa_cambio_load
 from exportacion_dolar_load import exportacion_dolar_load
 from intervencion_tdc_load import intervencion_tdc_load
+from intervencion_euro_load import intervencion_euro_load
 from fideicomiso_load import fideicomiso_load
 
 class cargaDatos:
@@ -69,6 +70,9 @@ class cargaDatos:
     
     def intervencion_tdc(self):
         return intervencion_tdc_load(self.ruta, self.rutadb, self.cartera.df, self.fecha)
+    
+    def intervencion_euro(self):
+        return intervencion_euro_load(self.ruta, self.rutadb, self.cartera.df, self.fecha)
     
     def fideicomiso(self):
         return fideicomiso_load(self.ruta, self.rutadb, self.cartera.df, self.fecha)

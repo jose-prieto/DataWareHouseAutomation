@@ -19,10 +19,10 @@ class pf_unifica_load:
         self.df = self.df[(self.df[" Oficina Contable "] < 700) & 
                           (self.df[" Estatus de la Operacion "] != "CANCELADA")]
         
+        print("pf_unifica bolívares monto total: ", self.df[' Monto '].sum())
         self.df = pd.merge(self.df, cartera, how='inner', right_on='MisCliente', left_on=' MIS ')
         self.df = self.df.groupby([' MIS '], as_index=False).agg({' Monto ': sum})
         self.df = self.df.rename(columns={' MIS ': 'mis', ' Monto ': 'monto'})
-        print("pf_unifica bolívares monto total: ", self.df['monto'].sum())
         
     """def insertDfAccess(self,df):
         try:

@@ -21,6 +21,7 @@ class controlador:
         self.mesa_cambio = ""
         self.exportacion = ""
         self.intervencion_tdc = ""
+        self.intervencion_euro = ""
         self.custodia = ""
         self.inventario = ""
         self.linea_cir = ""
@@ -42,6 +43,7 @@ class controlador:
         self.mesa_cambio = self.cargaDatos.mesa_cambio()
         self.exportacion = self.cargaDatos.exportacion()
         self.intervencion_tdc = self.cargaDatos.intervencion_tdc()
+        self.intervencion_euro = self.cargaDatos.intervencion_euro()
         self.custodia = self.cargaDatos.custodia()
         self.inventario = self.cargaDatos.inventario()
         self.originacion = self.cargaDatos.originacion()
@@ -96,6 +98,7 @@ class controlador:
         carteraMonto = pd.merge(carteraMonto, self.mesa_cambio.get_monto(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.exportacion.get_monto(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.intervencion_tdc.get_monto(), how='outer', left_on='mis', right_on='mis')
+        carteraMonto = pd.merge(carteraMonto, self.intervencion_euro.get_monto(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.custodia.get_monto(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.inventario.get_monto(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.originacion.get_monto(), how='outer', left_on='mis', right_on='mis')
@@ -112,6 +115,7 @@ class controlador:
         carteraMonto = pd.merge(carteraMonto, self.mesa_cambio.get_usable(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.exportacion.get_usable(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.intervencion_tdc.get_usable(), how='outer', left_on='mis', right_on='mis')
+        carteraMonto = pd.merge(carteraMonto, self.intervencion_euro.get_usable(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.custodia.get_usable(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.inventario.get_usable(), how='outer', left_on='mis', right_on='mis')
         carteraMonto = pd.merge(carteraMonto, self.originacion.get_usable(), how='outer', left_on='mis', right_on='mis')
@@ -144,6 +148,7 @@ class controlador:
         self.mesa_cambio.to_csv()
         self.exportacion.to_csv()
         self.intervencion_tdc.to_csv()
+        self.intervencion_euro.to_csv()
         self.custodia.to_csv()
         self.inventario.to_csv()
         self.originacion.to_csv()
@@ -163,6 +168,7 @@ class controlador:
         self.mesa_cambio.insertDf()
         self.exportacion.insertDf()
         self.intervencion_tdc.insertDf()
+        self.intervencion_euro.insertDf()
         self.custodia.insertDf()
         self.inventario.insertDf()
         self.originacion.insertDf()
@@ -185,6 +191,7 @@ class controlador:
             self.mesa_cambio.insertPg(conector.cursor)
             self.exportacion.insertPg(conector.cursor)
             self.intervencion_tdc.insertPg(conector.cursor)
+            self.intervencion_euro.insertPg(conector.cursor)
             self.custodia.insertPg(conector.cursor)
             self.inventario.insertPg(conector.cursor)
             self.originacion.insertPg(conector.cursor)
@@ -221,6 +228,6 @@ class controlador:
                 break
         
     #Dirección en pc de archivos fuente, dirección de base de datos destino, nombre de la tabla dentro de la cartera clientes y fecha a asignar a cada registro.
-controlador(r'C:\Users\bc221066\Documents\José Prieto\Cross Selling\Insumos\2021\Abril', r'C:\Users\bc221066\Documents\José Prieto\Cross Selling\DataWareHouse\CSCOMERCIAL.accdb', "Base_Clientes", '30/04/2021').controlador()
+controlador(r'C:\Users\bc221066\Documents\José Prieto\Cross Selling\Insumos\2021\Mayo', r'C:\Users\bc221066\Documents\José Prieto\Cross Selling\DataWareHouse\CSCOMERCIAL.accdb', "Base_Clientes", '28/05/2021').controlador()
 
 #contro = controlador(r'C:\Users\bc221066\Documents\José Prieto\Insumos Cross Selling\Enero', r'C:\Users\bc221066\Documents\José Prieto\Insumos Cross Selling\Cross Selling', "Cartera_Clientes_Enero_2020", '29/01/2021').insert_db()
